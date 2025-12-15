@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fullstack App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Full Stack Application</h1>
+    <p>This app is deployed using Terraform</p>
+    <button onclick="getMessage()">Get Backend Message</button>
+    <h2 id="output"></h2>
+  </div>
+
+  <script>
+    function getMessage() {
+      fetch("http://PUBLIC_IP:3000/api")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("output").innerText = data;
+        });
+    }
+  </script>
+</body>
+</html>
